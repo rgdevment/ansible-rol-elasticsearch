@@ -11,20 +11,14 @@
 - name: Deamon Elastic Search
   command: "update-rc.d elasticsearch defaults 95 10"
 
-- name: Service Elastic Search enable
-  command: "systemctl enable elasticsearch.service"
-
-- name: Start service elasticsearch, if not running
-  service:
-    name: elasticsearch
-    state: started
-
-- name: Daemon Elastic Search reload
+- name: Elastic Search reload deamon
   command: "/bin/systemctl daemon-reload"
 
-- name: Elastic Search start
+- name: Service Elastic Search enable
   command: "/bin/systemctl enable elasticsearch.service"
-  notify: restart elasticsearch
+
+- name: Elastic Search start
+  command: "systemctl start elasticsearch.service"
   
 - name: Make sure Elasticsearch is running before proceeding.
   wait_for: host={{ elasticsearch_network_host }} port={{ elasticsearch_http_port }} delay=3 timeout=300
