@@ -15,7 +15,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: debianserver
+cluster.name: {{ cluster_name }}
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -52,11 +52,11 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-network.host: 0.0.0.0
+network.host: {{ network_host }}
 #
 # Set a custom port for HTTP:
 #
-http.port: {{ elasticsearch_http_port }}
+http.port: {{ http_port }}
 #
 # For more information, see the documentation at:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
