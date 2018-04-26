@@ -9,7 +9,7 @@ An Ansible Role that installs Elasticsearch on Debian/Ubuntu.
 ## Requirements
 
 - Requires at least Java 8+.
-- **2048 mb ram minimum**
+- **Memory: 2048mb minimum**
 
 ```
 config.vm.provider "virtualbox" do |v|
@@ -20,8 +20,8 @@ end
 
 ## Role Variables
 
-    elasticsearch_network_host: localhost
-    elasticsearch_http_port: 9200
+    network_host: localhost
+    http_port: 9200
 
 ## Dependencies
 
@@ -33,4 +33,4 @@ end
 
 ## License
 
-MIT / BSD
+MIT
