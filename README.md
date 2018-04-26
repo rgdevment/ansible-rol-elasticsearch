@@ -5,11 +5,11 @@ An Ansible Role that installs Elasticsearch on Debian/Ubuntu.
 ## Requirements
 
 - Requires at least Java 8+.
-- **1024 mb ram minimum**
+- **2048 mb ram minimum**
 
 ```
 config.vm.provider "virtualbox" do |v|
-  v.memory = 1024
+  v.memory = 2048
   v.cpus = 2
 end
 ```
