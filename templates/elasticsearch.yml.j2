@@ -52,11 +52,11 @@ path.logs: /var/log/elasticsearch
 #
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
-#network.host: {{ elasticsearch_network_host }}
+network.host: 0.0.0.0
 #
 # Set a custom port for HTTP:
 #
-#http.port: {{ elasticsearch_http_port }}
+http.port: {{ elasticsearch_http_port }}
 #
 # For more information, see the documentation at:
 # <http://www.elastic.co/guide/en/elasticsearch/reference/current/modules-network.html>
