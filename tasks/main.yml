@@ -1,0 +1,30 @@
+---
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Configure Elasticsearch.
+  template:
+    src: elasticsearch.yml.j2
+    dest: /etc/elasticsearch/elasticsearch.yml
+  notify: restart elasticsearch
+
+- name: Deamon Elastic Search
+  command: "update-rc.d elasticsearch defaults 95 10"
+
+- name: Service Elastic Search enable
+  command: "systemctl enable elasticsearch.service"
+
+- name: Start service elasticsearch, if not running
+  service:
+    name: elasticsearch
+    state: started
+
+- name: Daemon Elastic Search reload
+  command: "/bin/systemctl daemon-reload"
+
+- name: Elastic Search start
+  command: "/bin/systemctl enable elasticsearch.service"
+  notify: restart elasticsearch
+  
+- name: Make sure Elasticsearch is running before proceeding.
+  wait_for: host={{ elasticsearch_network_host }} port={{ elasticsearch_http_port }} delay=3 timeout=300

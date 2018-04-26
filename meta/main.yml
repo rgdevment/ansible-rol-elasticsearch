@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: MarioDevment
+  description: Elasticsearch for Debian.
+  company: "null"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.0
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  galaxy_tags:
+    - web

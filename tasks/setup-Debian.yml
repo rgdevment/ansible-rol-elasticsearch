@@ -1,0 +1,17 @@
+---
+- name: Add Elasticsearch apt key.
+  apt_key:
+    url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+    state: present
+
+- name: Add Elasticsearch repository.
+  apt_repository:
+    repo: 'deb https://artifacts.elastic.co/packages/6.x/apt stable main'
+    state: present
+    update_cache: yes
+
+- name: Install latest version of "elasticsearch" and "install-recommends"
+  apt:
+    name: elasticsearch
+    state: latest
+    install_recommends: yes
