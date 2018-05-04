@@ -1,0 +1,9 @@
+---
+- name: Add Elasticsearch Repositories
+  sudo: yes
+  copy:
+    src: ./files/elasticsearch.repo
+    dest: /etc/yum.repos.d/
+
+- name: Install Elasticsearch.
+  yum: pkg=elasticsearch state=present
