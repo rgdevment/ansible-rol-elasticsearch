@@ -1,9 +1,9 @@
 ---
-- include_tasks: setup-Debian.yml
-  when: ansible_os_family == 'Debian'
-
-- include_tasks: setup-centos.yml
+- include_tasks: centos.yml
   when: ansible_os_family == 'RedHat'
+
+- include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
 
 - name: Configure Elasticsearch.
   template:
