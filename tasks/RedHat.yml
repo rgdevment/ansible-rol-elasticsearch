@@ -5,5 +5,34 @@
     src: ./files/elasticsearch.repo
     dest: /etc/yum.repos.d/
 
-- name: Install Elasticsearch.
-  yum: pkg=elasticsearch state=present
+- name: Install Elasticsearch
+  sudo: yes
+  yum:
+    name: elasticsearch
+
+- name: Configure Elasticsearch.
+  template:
+    src: elasticsearch.yml.base
+    dest: /etc/elasticsearch/elasticsearch.yml
+  notify: restart elasticsearch
+
+- name: Elastic Search reload deamon
+  command: "/bin/systemctl daemon-reload"
+
+- name: Service Elastic Search enable
+  command: "/bin/systemctl enable elasticsearch.service"
+
+- name: Elastic Search start
+  command: "systemctl start elasticsearch.service"
+  notify: restart elasticsearch
+  
+- name: Elastic Search start
+  command: "chkconfig --add elasticsearch"
+
+- name: Start service
+  service:
+    name: elasticsearch
+    state: started
+
+- name: Make sure Elasticsearch is running before proceeding.
+  wait_for: host={{ network_host }} port={{ http_port }} delay=3 timeout=300
