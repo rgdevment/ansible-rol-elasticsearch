@@ -25,6 +25,7 @@ end
 
 ## Example Playbook
 
+    role: - MarioDevment.java8
     role: - MarioDevment.elasticsearch
 
 ## License

@@ -15,16 +15,6 @@
     src: elasticsearch.yml.base
     dest: /etc/elasticsearch/elasticsearch.yml
   notify: restart elasticsearch
-
-- name: Elastic Search reload deamon
-  command: "/bin/systemctl daemon-reload"
-
-- name: Service Elastic Search enable
-  command: "/bin/systemctl enable elasticsearch.service"
-
-- name: Elastic Search start
-  command: "systemctl start elasticsearch.service"
-  notify: restart elasticsearch
   
 - name: Elastic Search start
   command: "chkconfig --add elasticsearch"

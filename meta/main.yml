@@ -1,8 +1,8 @@
 ---
 galaxy_info:
   author: MarioDevment
-  description: Elasticsearch for Debian.
-  company: "null"
+  description: Elasticsearch for Debian and centos.
+  company: "atic.cl"
   license: "license (BSD, MIT)"
   min_ansible_version: 2.0
   platforms:
